@@ -1,9 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
+import FormikRegistrationForm from "./components/RegistrationForm";
 import "./App.css";
 
-function App() {
-  return <div className="App">Test</div>;
+class App extends React.Component {
+  state = {};
+
+  render() {
+    return (
+      <div className="App">
+        <FormikRegistrationForm />
+      </div>
+    );
+  }
 }
 
 export default App;
