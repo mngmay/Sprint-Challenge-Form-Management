@@ -21,10 +21,14 @@ describe("<FormikRegistrationForm />", () => {
     const password = registration.queryByTestId("password");
     const submitBtn = registration.queryByTestId("submit");
 
-    fireEvent.click(submitBtn);
-    expect(username.innerHTML).toBe("");
-    expect(password.innerHTML).toBe("");
-  });
+    username.value = "username";
+    password.value = "password1233455";
 
-  it("should output list", () => {});
+    expect(username.value).toBe("username");
+    expect(password.value).toBe("password1233455");
+
+    fireEvent.click(submitBtn);
+    expect(username.value).toBe("");
+    expect(password.value).toBe("");
+  });
 });
