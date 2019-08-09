@@ -31,4 +31,16 @@ describe("<FormikRegistrationForm />", () => {
     expect(username.value).toBe("");
     expect(password.value).toBe("");
   });
+
+  it("should render a list of recipes provided on props", () => {
+    const recipesData = [
+      { name: "test dish1", course: "dish1" },
+      { name: "test dish2", course: "dish2" },
+      { name: "test dish3", course: "dish3" }
+    ];
+
+    const test = render(<RecipeList recipes={recipesData} />);
+    const recipes = test.getAllByTestId("recipe");
+    expect(recipes).toHaveLength(recipesData.length);
+  });
 });
