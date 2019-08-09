@@ -3,26 +3,32 @@ import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const RegistrationForm = ({
-  errors,
-  touched,
-  values,
-  status,
-  statusUpdate
-}) => {
+const RegistrationForm = ({ errors, touched, values, status }) => {
   return (
     <Form>
-      <Field type="text" name="username" placeholder="Username" />
+      <Field
+        type="text"
+        name="username"
+        placeholder="Username"
+        data-testid="username"
+      />
       {touched.username && errors.username && (
         <p className="error">{errors.username}</p>
       )}
 
-      <Field type="password" name="password" placeholder="Password" />
+      <Field
+        type="password"
+        name="password"
+        placeholder="Password"
+        data-testid="password"
+      />
       {touched.password && errors.password && (
         <p className="error">{errors.password}</p>
       )}
 
-      <button type="submit">Submit</button>
+      <button type="submit" data-testid="submit">
+        Submit
+      </button>
     </Form>
   );
 };
@@ -46,6 +52,7 @@ const FormikRegistrationForm = withFormik({
     axios
       .post(`http://localhost:5000/api/register`, values)
       .then(res => {
+        console.log("res data", res.data);
         setStatus(res.data);
         resetForm();
       })

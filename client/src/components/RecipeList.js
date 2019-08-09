@@ -2,13 +2,13 @@ import React from "react";
 
 const RecipeList = ({ recipes }) => {
   return (
-    <ul className="recipe-list">
+    <div className="recipe-list">
       {recipes.map(recipe => (
-        <li>
+        <div key={recipe.name}>
           Recipe: {recipe.name} Course: {recipe.course}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

@@ -6,8 +6,6 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    users: [],
-    passwords: [],
     recipes: []
   };
 
@@ -22,7 +20,6 @@ class App extends React.Component {
         recipes.data.forEach(recipe =>
           this.setState({ recipes: [...this.state.recipes, recipe] })
         );
-        console.log("Recipes State", this.state.recipes);
       })
       .catch(err => {
         console.log(err);
@@ -32,7 +29,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <FormikRegistrationForm users={this.state.users} />
+        <h1>Registration Form</h1>
+        <FormikRegistrationForm />
+        <h1>Recipe List</h1>
         <RecipeList recipes={this.state.recipes} />
       </div>
     );
