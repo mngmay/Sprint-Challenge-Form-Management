@@ -1,22 +1,30 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/react/cleanup-after-each";
 
 import FormikRegistrationForm from "../components/RegistrationForm";
+import RecipeList from "../components/RecipeList";
 
 describe("<FormikRegistrationForm />", () => {
-  it("should render Registration Form", () => {
+  it("button should render submit", () => {
     const registration = render(<FormikRegistrationForm />);
-    expect(registration.getByText(/registration form/i));
+    const submitBtn = registration.queryByTestId("submit").innerHTML;
+    const submitText = text => {
+      return text === "Submit";
+    };
+    expect(submitText(submitBtn)).toBe(true);
   });
 
   it("Registration form should clear after submit", () => {
     const registration = render(<FormikRegistrationForm />);
-    const username = registration.queryByTestId("username").innerHTML;
-    const password = registration.queryByTestId("password").innerHTML;
-    const ballText = text => {
-      return text === "Ball";
-    };
-    expect(ballText(ball)).toBe(true);
+    const username = registration.queryByTestId("username");
+    const password = registration.queryByTestId("password");
+    const submitBtn = registration.queryByTestId("submit");
+
+    fireEvent.click(submitBtn);
+    expect(username.innerHTML).toBe("");
+    expect(password.innerHTML).toBe("");
   });
+
+  it("should output list", () => {});
 });
