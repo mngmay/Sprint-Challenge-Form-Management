@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import FormikRegistrationForm from "./components/RegistrationForm";
+import RecipeList from "./components/RecipeList";
 import "./App.css";
 
 class App extends React.Component {
@@ -32,6 +33,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <FormikRegistrationForm users={this.state.users} />
+        <RecipeList recipes={this.state.recipes} />
       </div>
     );
   }
