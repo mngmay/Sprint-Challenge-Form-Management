@@ -13,7 +13,9 @@ const RegistrationForm = ({
   return (
     <Form>
       <Field type="text" name="username" placeholder="Username" />
-      {touched.name && errors.name && <p className="error">{errors.name}</p>}
+      {touched.username && errors.username && (
+        <p className="error">{errors.username}</p>
+      )}
 
       <Field type="password" name="password" placeholder="Password" />
       {touched.password && errors.password && (
@@ -34,7 +36,7 @@ const FormikRegistrationForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Name is required"),
+    username: Yup.string().required("Username is required"),
     password: Yup.string()
       .min(8, "Password must be 8 characters or longer")
       .required("Password is required")
